@@ -1,6 +1,5 @@
 package com.bit.fruteria;
 
-import com.sun.media.jfxmedia.logging.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,7 +56,6 @@ public class FruteriaRestController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity removeFruta(@PathVariable(value="id") int id) {
-        Logger.logMsg(Logger.INFO, "Entra a borrar con "+id);
         Optional<Fruta> optionalFruta = frutas.stream().filter(f -> f.getId() == id).findFirst();
         if(!optionalFruta.isPresent()){
             return ResponseEntity.badRequest().body("No se encontro la fruta con id " + id);
